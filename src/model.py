@@ -1,0 +1,13 @@
+# Purpose: Train, save, and serve the travel-time predictor (and optional classifier).
+
+# Core contents:
+
+# Training pipeline: load engineered X/y, split, fit a fast tabular regressor (e.g., gradient boosting/XGBoost), evaluate MAE, and persist model + feature list.
+
+# Inference functions: predict_travel_time(next_horizon_features) → array; batch predict for all active trains.
+
+# Model IO: save/load model artifacts; ensure identical feature ordering and preprocessing at train and inference time.
+
+# Optional: simple feature importance export (for explainability in UI).
+
+# Outputs: model.pkl (or similar), feature_names.json, and a thin predict API callable from simulator or the UI.

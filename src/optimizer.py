@@ -1,0 +1,13 @@
+# Purpose: Suggest conflict-free schedule adjustments using predictions and constraints.
+
+# Core contents:
+
+# Heuristic engine: for each predicted/actual conflict, try candidate actions (delay lower-priority by small increments; slow higher-priority within limits), simulate impact via simulator hooks, and choose minimal global delay.
+
+# Optional MILP/CP-SAT stub (short horizon): variables for passage times, headway constraints, platform exclusivity, objective = minimize weighted delays.
+
+# Constraint guards: never violate headway, speed limits, or platform capacity; read constants for consistency.
+
+# Output formatting: return a list of suggested offsets per train with estimated impact and rationale strings.
+
+# Outputs: offsets.csv / suggestions.json and an “applied” timetable via simulator’s apply_offsets.
