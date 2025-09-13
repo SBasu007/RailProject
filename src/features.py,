@@ -1,0 +1,13 @@
+Purpose: Turn raw tables into model-ready features and labels for prediction.
+
+Core contents:
+
+Labeling: compute travel_time_sec between consecutive events per train; arrival_delay_next_station; optional conflict probability labels.
+
+Feature builders: current_delay_min, rolling averages (e.g., recent avg speed), lag features (delay_lag_1, delay_lag_2), join with TMS (permitted_speed_kmph), weather (precipitation_mm, visibility), and datalogger aggregates.
+
+Train/section encoding: type (passenger/freight), wagons_count, priority, section occupancy indicators, scheduled_trains_next_30min.
+
+Validation: schema checks, null handling, and consistent dtypes to avoid train/infer drift.
+
+Outputs: X (feature DataFrame), y (label Series), and a feature spec used by model.py during inference.
