@@ -1,0 +1,4 @@
+train_id,wagons_count,cargo_type,priority,origin,destination,planned_speed_kmph,max_allowed_speed_kmph
+F001,49,cement,2,Belgharia,Sodepur,45,60
+F002,53,containers,2,Belgharia,Sodepur,45,60
+

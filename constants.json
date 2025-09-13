@@ -1,0 +1,90 @@
+{
+"scenario": {
+"name": "Belgharia-Agarpara-Sodepur",
+"timezone": "Asia/Kolkata",
+"horizon_minutes": 60,
+"start_time_iso": "2025-09-13T08:00:00+05:30"
+},
+"stations": [
+{"station_id": "STN_BEL", "name": "Belgharia", "lat": 22.655, "lon": 88.387},
+{"station_id": "STN_AGR", "name": "Agarpara", "lat": 22.675, "lon": 88.375},
+{"station_id": "STN_SOD", "name": "Sodepur", "lat": 22.704, "lon": 88.370}
+],
+"sections": [
+{
+"section_id": "SEC_BEL_AGR",
+"from_station": "STN_BEL",
+"to_station": "STN_AGR",
+"bidirectional": true,
+"permitted_speed_kmph": 70,
+"length_km": 3.0
+},
+{
+"section_id": "SEC_AGR_SOD",
+"from_station": "STN_AGR",
+"to_station": "STN_SOD",
+"bidirectional": true,
+"permitted_speed_kmph": 70,
+"length_km": 3.5
+}
+],
+"platforms": {
+"STN_BEL": {"platform_count": 1},
+"STN_AGR": {"platform_count": 1},
+"STN_SOD": {"platform_count": 1}
+},
+"operations": {
+"headway_sec": 180,
+"min_dwell_sec": 60,
+"max_dwell_sec": 300,
+"buffer_sec": 30,
+"direction_enum": ["UP", "DN"],
+"event_type_enum": ["ARRIVAL", "DEPARTURE", "PASS"]
+},
+"speed_restrictions": [
+{
+"section_id": "SEC_AGR_SOD",
+"start_time_iso": "2025-09-13T08:20:00+05:30",
+"end_time_iso": "2025-09-13T08:30:00+05:30",
+"temporary_speed_kmph": 45,
+"reason": "maintenance_tsr"
+}
+],
+"train_defaults": {
+"passenger": {
+"priority": 1,
+"planned_speed_kmph": 60,
+"max_allowed_speed_kmph": 80,
+"typical_dwell_sec": 90
+},
+"freight": {
+"priority": 2,
+"planned_speed_kmph": 45,
+"max_allowed_speed_kmph": 60,
+"typical_dwell_sec": 120,
+"wagons_count_default": 45
+}
+},
+"optimizer": {
+"objective": "min_weighted_total_delay",
+"priority_weights": {
+"passenger": 1.0,
+"freight": 1.2
+},
+"max_offset_minutes": 10,
+"offset_step_minutes": 1,
+"enforce_constraints": {
+"headway": true,
+"platform_exclusivity": true,
+"speed_limits": true
+}
+},
+"ui": {
+"map_initial_view": {
+"lat": 22.680,
+"lon": 88.380,
+"zoom": 11
+},
+"show_tooltips": true
+}
+}
