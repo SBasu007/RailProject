@@ -175,3 +175,13 @@ db.segments.createIndex({ from: 1, to: 1 })
 db.constraints.createIndex({ segment_id: 1, start: 1, end: 1 })
 
 print("railwayDB setup complete")
+
+
+
+
+
+
+//TO RUN---->
+//connect
+//use railwayDB
+//cls
